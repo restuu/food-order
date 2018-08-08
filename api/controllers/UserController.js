@@ -42,11 +42,11 @@ module.exports = {
           email: user.email,
         };
         const token = jwt.sign(payload, sails.config.custom.SECRET_KEY);
-        res.ok({token});
+        return res.ok({token});
       }
     } catch (error) {
       sails.log(error);
-      res.serverError(error);
+      return res.serverError(error);
     }
   }
 };

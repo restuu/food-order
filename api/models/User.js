@@ -56,6 +56,7 @@ module.exports = {
       });
 
     valueToSet.password = hash;
+    valueToSet.email = valueToSet.email.toLowerCase();
 
     return proceed();
   }

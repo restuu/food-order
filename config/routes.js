@@ -26,8 +26,16 @@ module.exports.routes = {
   //  ╔═╗╔═╗╦  ╔═╗╔╗╔╔╦╗╔═╗╔═╗╦╔╗╔╔╦╗╔═╗
   //  ╠═╣╠═╝║  ║╣ ║║║ ║║╠═╝║ ║║║║║ ║ ╚═╗
   //  ╩ ╩╩  ╩  ╚═╝╝╚╝═╩╝╩  ╚═╝╩╝╚╝ ╩ ╚═╝
+
+  // /menu
   'GET /menu': 'MenuController.fetchAll',
 
+  // /users
+  'POST /users/register': 'UserController.addNewUser',
+  'POST /users/login': 'UserController.userLogin',
+
+  // /order
+  'POST /users/order/add': 'OrderController.addNewOrder',
 
   //  ╦ ╦╔═╗╔╗ ╦ ╦╔═╗╔═╗╦╔═╔═╗
   //  ║║║║╣ ╠╩╗╠═╣║ ║║ ║╠╩╗╚═╗

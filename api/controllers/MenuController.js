@@ -6,8 +6,9 @@
  */
 
 module.exports = {
-  fetchAll: (req, res) => {
-    
+  fetchAll: async (req, res) => {
+    const menu = await Menu.find({});
+    return res.ok(menu);
   }
 
 };
