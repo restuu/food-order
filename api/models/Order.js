@@ -29,6 +29,9 @@ module.exports = {
     customer: {
       model: 'user',
     },
+    chef: {
+      model: 'user',
+    },
     dish: {
       model: 'menu',
     },

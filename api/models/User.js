@@ -22,7 +22,7 @@ module.exports = {
       isEmail: true,
       required: true,
     },
-    passwords: {
+    password: {
       type: 'string',
       required: true
     },
@@ -35,12 +35,30 @@ module.exports = {
     //  ╔═╗╔═╗╔═╗╔═╗╔═╗╦╔═╗╔╦╗╦╔═╗╔╗╔╔═╗
     //  ╠═╣╚═╗╚═╗║ ║║  ║╠═╣ ║ ║║ ║║║║╚═╗
     //  ╩ ╩╚═╝╚═╝╚═╝╚═╝╩╩ ╩ ╩ ╩╚═╝╝╚╝╚═╝
+
+    // for customers
     orders: {
       collection: 'order',
       via: 'customer',
-    }
+    },
+
+    // for chef
+    cooking: {
+      collection: 'order',
+      via: 'chef',
+    },
   },
 
+  beforeCreate: async (valueToSet, proceed) => {
+    let hash = await sails.helpers.password.encrypt(valueToSet.password)
+      .intercept('hashError', () => {
+        throw new Error('hashing error');
+      });
+
+    valueToSet.password = hash;
+
+    return proceed();
+  }
 
 };
 
