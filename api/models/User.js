@@ -15,7 +15,16 @@ module.exports = {
     name: 'string',
     role: {
       type: 'string',
-      isIn: ['customer', 'admin']
+      isIn: ['customer', 'admin', 'chef']
+    },
+    email: {
+      type: 'string',
+      isEmail: true,
+      required: true,
+    },
+    passwords: {
+      type: 'string',
+      required: true
     },
 
     //  ╔═╗╔╦╗╔╗ ╔═╗╔╦╗╔═╗
@@ -31,6 +40,7 @@ module.exports = {
       via: 'customer',
     }
   },
+
 
 };
 
