@@ -15,6 +15,7 @@ module.exports = {
     name: 'string',
     price: 'number',
     cookingDuration: 'number', // in minutes
+    description: 'string',
 
     //  ╔═╗╔╦╗╔╗ ╔═╗╔╦╗╔═╗
     //  ║╣ ║║║╠╩╗║╣  ║║╚═╗

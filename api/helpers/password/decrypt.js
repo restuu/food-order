@@ -27,8 +27,11 @@ module.exports = {
     success: {
       outputDescription: 'password matched'
     },
+    error: {
+      outputDescription: 'wrong password'
+    },
     wrongPassword: {
-      description: 'wrong password inputed'
+      outputDescription: 'wrong password'
     }
   },
 
@@ -39,7 +42,7 @@ module.exports = {
       if (isMatch) {
         return exits.success(true);
       }
-      throw 'wrongPassword';
+      return exits.wrongPassword({status: 400});
     } catch (error) {
       sails.log(error);
     }

@@ -12,6 +12,11 @@ module.exports = {
     const { name, role, email, password } = req.body;
 
     try {
+      // find if user already exist or not
+      let isExist = await User.findOne({email});
+      if (isExist) {
+        return res.badRequest({ message: 'user with this email already exist' });
+      }
       await User.create({name, role, email, password});
       return res.status(201).json({message: 'new user created'});
     } catch (error) {
@@ -31,11 +36,11 @@ module.exports = {
       let passwordMatch = await sails.helpers.password.decrypt.with({
         password,
         hash: user.password,
-      }).intercept(
-        'wrongPassword',
-        () => res.badRequest({ message: 'wrong password' })
-      );
+      });
 
+      console.log('====================================');
+      console.log(passwordMatch);
+      console.log('====================================');
       if (passwordMatch) {
         const payload = {
           id: user.id,
@@ -45,7 +50,9 @@ module.exports = {
         return res.ok({token});
       }
     } catch (error) {
-      sails.log(error);
+      if (error.raw.status === 400) {
+        return res.badRequest();
+      }
       return res.serverError(error);
     }
   }

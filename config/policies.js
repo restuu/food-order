@@ -20,6 +20,12 @@ module.exports.policies = {
   // '*': true,
   'OrderController': {
     '*': 'auth',
+  },
+
+  'MenuController': {
+    'addNewMenu': 'auth',
+    'updateMenuById': 'auth',
+    'delMenuById': 'auth'
   }
 
 };

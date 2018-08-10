@@ -11,10 +11,12 @@
     "bcryptjs": "^2.4.3",
     "jsonwebtoken": "^8.3.0",
     "pg": "^7.4.3",
+    "redis": "^2.8.0",
     "sails": "^1.0.2",
     "sails-hook-orm": "^2.0.0-16",
     "sails-hook-sockets": "^1.4.0",
-    "sails-postgresql": "^1.0.1"
+    "sails-postgresql": "^1.0.1",
+    "skipper-s3": "^0.5.11"
   },
   "devDependencies": {
     "@sailshq/eslint": "^4.19.3"

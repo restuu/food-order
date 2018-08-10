@@ -29,13 +29,19 @@ module.exports.routes = {
 
   // /menu
   'GET /menu': 'MenuController.fetchAll',
+  'POST /menu/add': 'MenuController.addNewMenu',
+  'PUT /menu/:dishId/update': 'MenuController.updateMenuById',
+  'DELETE /menu/:dishId/delete': 'MenuController.delMenuById',
 
   // /users
   'POST /users/register': 'UserController.addNewUser',
   'POST /users/login': 'UserController.userLogin',
 
   // /order
-  'POST /users/order/add': 'OrderController.addNewOrder',
+  'POST /order/add': 'OrderController.addNewOrder',
+  'GET /order/current': 'OrderController.getCurrentOrder',
+  'PUT /order/:orderId/process': 'OrderController.processOrderById',
+  'PUT /order/queue/:orderNumber/complete': 'OrderController.completeOrderQueue'
 
   //  ╦ ╦╔═╗╔╗ ╦ ╦╔═╗╔═╗╦╔═╔═╗
   //  ║║║║╣ ╠╩╗╠═╣║ ║║ ║╠╩╗╚═╗

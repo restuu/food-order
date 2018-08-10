@@ -8,6 +8,7 @@
  * For more information on bootstrapping your app, check out:
  * https://sailsjs.com/config/bootstrap
  */
+const bcrypt = require('bcryptjs');
 
 module.exports.bootstrap = async function(done) {
 
@@ -26,6 +27,16 @@ module.exports.bootstrap = async function(done) {
   //   // etc.
   // ]);
   // ```
+  const admins = await User.find({role: 'admin'});
+  if (admins.length === 0) {
+    await User.create({
+      name: 'admin',
+      email: 'admin@email.com',
+      role: 'admin',
+      password: 'admin',
+    });
+  }
+
   if (await Menu.count() > 0) {
     return done();
   }
